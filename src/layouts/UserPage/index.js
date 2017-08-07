@@ -1,15 +1,17 @@
 import React from 'react';
-import { compose, withProps } from 'recompose';
+import { branch, withState, compose, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
 import { GHListRepositories } from 'containers';
 
 import ProfileInfo from './ProfileInfo';
 import './styles.css';
 
-const UserPage = ({ username, repos }) => (
+const UserPage = ({ username, repos, sortAsc, ascending }) => (
   <div>
     <ProfileInfo username={username} />
+    <a href="#" onClick={() => sortAsc(sort => !sort)}>{ ascending ? 'Ascending' : 'Descending'}</a>
     <h1>Repositórios: </h1>
     <ul>
       { repos.map(r =>
@@ -25,9 +27,14 @@ const UserPage = ({ username, repos }) => (
 )
 
 export default compose(
+  withState('ascending', 'sortAsc', false),
   withProps(props => ({ q: props.match.params.username })),
   GHListRepositories,
-  withProps(props => ({
-    repos: props.repos.sort((a, b) => b.stargazers_count - a.stargazers_count)
+  withProps(({ ascending, repos }) => ({
+    repos: repos.sort((a, b) =>
+      ascending ?
+      a.stargazers_count - b.stargazers_count :
+      b.stargazers_count - a.stargazers_count
+    )
   })),
 )(UserPage);

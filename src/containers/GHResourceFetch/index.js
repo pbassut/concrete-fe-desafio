@@ -5,7 +5,7 @@ import { withHandlers, branch, lifecycle, withState, defaultProps, compose } fro
 import { componentDidMount } from 'composables';
 
 export default methodCall => compose(
-  defaultProps({ start: true, token: 'cd3c4f5f6f320590c8a2fd0fc701edd885dfb200' }),
+  defaultProps({ start: true, token: '51c4dbdc6296622ecc80fa6d11e4383b097b8853' }),
   withState('data', 'setData', []),
   withHandlers({
     request: ({ setData, token, ...props }) => () => {
