@@ -3,7 +3,6 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
 } from 'react-router-dom';
 import Home from 'layouts/Home';
 
@@ -14,12 +13,6 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li><Link to="/">Search</Link></li>
-          </ul>
-
-          <hr/>
-
           <Route exact path="/" component={Home}/>
         </div>
       </Router>
