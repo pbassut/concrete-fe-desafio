@@ -1,11 +1,7 @@
 import React from 'react';
-import { compose, renameProp, withHandlers, withProps } from 'recompose';
-import { Link } from 'react-router-dom';
+import { compose, withProps } from 'recompose';
 
-import { debug } from 'composables';
 import { GHRepository } from 'containers';
-
-import _ from 'lodash';
 
 import './styles.css';
 
@@ -25,5 +21,4 @@ export default compose(
     repo: props.match.params.repo,
   })),
   GHRepository,
-  debug,
 )(RepositoryPage);

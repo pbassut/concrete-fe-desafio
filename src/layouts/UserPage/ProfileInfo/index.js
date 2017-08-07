@@ -7,7 +7,7 @@ import _ from 'lodash';
 
 const ProfileInfo = ({ user }) => (
   <div>
-    <img src={user.avatar_url} />
+    <img alt="repository owner" src={user.avatar_url} />
     <h1>{`${user.name}(${user.login})`}</h1>
     <h2>Email: { user.email }</h2>
     <h2>Following: { user.following }</h2>

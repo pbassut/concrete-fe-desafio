@@ -2,7 +2,6 @@ import React from 'react';
 import { compose, withState, withHandlers, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 
-import { debug } from 'composables';
 import { GHSearchUsers } from 'containers';
 
 import _ from 'lodash';

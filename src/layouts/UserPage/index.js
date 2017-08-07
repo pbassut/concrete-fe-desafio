@@ -1,11 +1,8 @@
 import React from 'react';
-import { compose, renameProp, withHandlers, withProps } from 'recompose';
+import { compose, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 
-import { debug } from 'composables';
 import { GHListRepositories } from 'containers';
-
-import _ from 'lodash';
 
 import ProfileInfo from './ProfileInfo';
 import './styles.css';

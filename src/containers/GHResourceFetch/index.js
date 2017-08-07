@@ -1,9 +1,8 @@
 import _ from 'lodash';
 import GitHub from 'github-api';
-import { withHandlers, branch, lifecycle, withProps, withState, defaultProps, compose } from 'recompose';
+import { withHandlers, branch, lifecycle, withState, defaultProps, compose } from 'recompose';
 
 import { componentDidMount } from 'composables';
-
 
 export default methodCall => compose(
   defaultProps({ start: true, token: 'cd3c4f5f6f320590c8a2fd0fc701edd885dfb200' }),
