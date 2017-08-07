@@ -6,7 +6,7 @@ import { componentDidMount } from 'composables';
 
 
 export default methodCall => compose(
-  defaultProps({ start: true, token: '6161008b690c758f357327ad95309f84db53b39e' }),
+  defaultProps({ start: true, token: 'cd3c4f5f6f320590c8a2fd0fc701edd885dfb200' }),
   withState('data', 'setData', []),
   withHandlers({
     request: ({ setData, token, ...props }) => () => {
