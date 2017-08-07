@@ -1,31 +1,34 @@
 import React from 'react';
-import { compose, withState, withHandlers, withProps } from 'recompose';
+import { defaultProps, compose, withState, withHandlers, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
+import { debounce } from 'lodash';
 
 import { GHSearchUsers } from 'containers';
 
-import _ from 'lodash';
-
-import './styles.css';
+import { Container, SearchInput, SearchForm, List, ListItem } from './styles.js';
 
 const Home = ({ onChange, users }) => (
-  <div>
-    <input type="text" onChange={e => onChange(e.target.value) }/>
-    <ul>{ users }</ul>
-  </div>
+  <Container>
+    <SearchForm>
+      <h1>Search</h1>
+      <SearchInput type="text" onChange={e => onChange(e.target.value) }/>
+      <List>{ users }</List>
+    </SearchForm>
+  </Container>
 )
 
 export default compose(
+  defaultProps({ start: false }),
   withState('q', 'search', ''),
   withHandlers({
-    onChange: ({ search }) => _.debounce(search, 500)
+    onChange: ({ search }) => debounce(search, 500)
   }),
   GHSearchUsers,
   withProps(({ results }) => ({
     users: results.map(({ id, login })=> 
-      <li key={id}>
+      <ListItem key={id}>
         <Link to={`/users/${login}`}>{login}</Link>
-      </li>
+      </ListItem>
     )
   })),
 )(Home);

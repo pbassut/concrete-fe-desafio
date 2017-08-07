@@ -5,8 +5,6 @@ import Home from 'layouts/Home';
 import UserPage from 'layouts/UserPage';
 import RepositoryPage from 'layouts/RepositoryPage';
 
-import './styles.css';
-
 class App extends React.Component {
   render() {
     return (
