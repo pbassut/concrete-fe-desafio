@@ -3,7 +3,7 @@ import { GHResourceFetch } from 'containers';
 
 export default compose(
   GHResourceFetch(
-    (gh, { q }) => gh.getUser(q).listRepos({ direction: 'asc', sort: 'stars', type: 'owner' })
+    (gh, { q }) => gh.getUser(q).listRepos()
   ),
   renameProp('data', 'repos'),
 )

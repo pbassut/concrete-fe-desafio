@@ -3,7 +3,7 @@ import { compose, renameProp, withHandlers, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 
 import { debug } from 'composables';
-import { GHRepositories } from 'containers';
+import { GHListRepositories } from 'containers';
 
 import _ from 'lodash';
 
@@ -29,7 +29,7 @@ const UserPage = ({ username, repos }) => (
 
 export default compose(
   withProps(props => ({ q: props.match.params.username })),
-  GHRepositories,
+  GHListRepositories,
   withProps(props => ({
     repos: props.repos.sort((a, b) => b.stargazers_count - a.stargazers_count)
   })),
