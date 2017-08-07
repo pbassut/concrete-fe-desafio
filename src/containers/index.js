@@ -1,3 +1,4 @@
 export { default as GHResourceFetch } from './GHResourceFetch';
 export { default as GHRepositories } from './GHRepositories';
-export { default as GHUsers } from './GHUsers';
+export { default as GHSearchUsers } from './GHSearchUsers';
+export { default as GHUser } from './GHUser';

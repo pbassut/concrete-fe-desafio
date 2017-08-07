@@ -8,5 +8,5 @@ export default compose(
   GHResourceFetch(
     (gh, { q }) => gh.search({ q }).forUsers()
   ),
-  renameProp('data', 'users'),
+  renameProp('data', 'results'),
 )

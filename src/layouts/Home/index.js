@@ -3,7 +3,7 @@ import { compose, withState, withHandlers, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 
 import { debug } from 'composables';
-import { GHUsers } from 'containers';
+import { GHSearchUsers } from 'containers';
 
 import _ from 'lodash';
 
@@ -21,11 +21,11 @@ export default compose(
   withHandlers({
     onChange: ({ search }) => _.debounce(search, 500)
   }),
-  GHUsers,
-  withProps(({ users }) => ({
-    users: users.map(({ id, login })=> 
+  GHSearchUsers,
+  withProps(({ results }) => ({
+    users: results.map(({ id, login })=> 
       <li key={id}>
-        <Link to={`/users/${id}`}>{login}</Link>
+        <Link to={`/users/${login}`}>{login}</Link>
       </li>
     )
   })),
