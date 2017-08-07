@@ -1,5 +1,5 @@
 import React from 'react';
-import { defaultProps, compose, withState, withHandlers, withProps } from 'recompose';
+import { lifecycle, defaultProps, compose, withState, withHandlers, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 import { debounce } from 'lodash';
 
@@ -31,4 +31,11 @@ export default compose(
       </ListItem>
     )
   })),
+  lifecycle({
+    componentWillReceiveProps(nextProps) {
+      if(this.props.q !== nextProps.q){
+        this.props.request();
+      }
+    }
+  }),
 )(Home);

@@ -3,7 +3,7 @@ import { GHResourceFetch } from 'containers';
 
 export default compose(
   GHResourceFetch(
-    (gh, { q }) => gh.search({ q }).forUsers()
+    ({ gh, q }) => gh.search({ q }).forUsers()
   ),
   renameProp('data', 'results'),
 )
