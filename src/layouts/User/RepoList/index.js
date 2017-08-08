@@ -1,12 +1,13 @@
 import React from 'react';
 import { branch, renderComponent, withState, compose, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
-import { isEmpty } from 'lodash';
+import { isEmpty, matchesProperty } from 'lodash';
 
 import { GHListRepositories } from 'containers';
 import { Loading } from 'components';
 
 import Star from './Star';
+import EmptyMessage from './EmptyMessage';
 import { StarCount } from './styles.js';
 
 const RepoList = ({ sortAsc, ascending, repos })=> (
@@ -33,13 +34,17 @@ const RepoList = ({ sortAsc, ascending, repos })=> (
 export default compose(
   withState('ascending', 'sortAsc', false),
   GHListRepositories,
+  branch(
+    matchesProperty('repos', null),
+    renderComponent(Loading),
+    branch(
+      props => isEmpty(props.repos),
+      renderComponent(EmptyMessage),
+    )
+  ),
   withProps(({ ascending, repos }) => ({
     repos: repos.sort(({ stargazers_count: s1 }, { stargazers_count: s2}) =>
       ascending ? s1 - s2 : s2 - s1
     )
   })),
-  branch(
-    ({ repos }) => isEmpty(repos),
-    renderComponent(Loading),
-  ),
 )(RepoList);

@@ -35,7 +35,7 @@ const ProfileInfo = ({ user }) => (
 export default compose(
   GHUser,
   branch(
-    matchesProperty('user', []),
+    matchesProperty('user', null),
     renderComponent(props => <Loading />),
   )
 )(ProfileInfo);

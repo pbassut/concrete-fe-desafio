@@ -1,7 +1,7 @@
 import React from 'react';
-import { lifecycle, defaultProps, compose, withState, withHandlers, withProps } from 'recompose';
+import { branch, lifecycle, compose, withState, withHandlers, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
-import { debounce } from 'lodash';
+import { isEmpty, debounce } from 'lodash';
 
 import { GHSearchUsers } from 'containers';
 import { Loading } from 'components';
@@ -38,11 +38,14 @@ export default compose(
       }
     }
   }),
-  withProps(({ results }) => ({
-    users: results.map(({ id, login })=> 
-      <ListItem key={id}>
-        <Link to={`/users/${login}`}>{login}</Link>
-      </ListItem>
-    )
-  })),
+  branch(
+    props => !isEmpty(props.results),
+    withProps(({ results }) => ({
+      users: results.map(({ id, login })=> 
+        <ListItem key={id}>
+          <Link to={`/users/${login}`}>{login}</Link>
+        </ListItem>
+      )
+    })),
+  ),
 )(Home);

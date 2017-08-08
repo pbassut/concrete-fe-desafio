@@ -10,7 +10,7 @@ export default methodCall => compose(
   withProps(({ token }) => ({
     gh: new GitHub({ token }),
   })),
-  withState('data', 'setData', []),
+  withState('data', 'setData', null),
   withHandlers({
     request: ({ setData, ...props }) => () => (
         methodCall(props)
