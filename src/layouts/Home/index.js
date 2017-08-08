@@ -18,7 +18,6 @@ const Home = ({ onChange, users }) => (
 )
 
 export default compose(
-  defaultProps({ start: false }),
   withState('q', 'search', ''),
   withHandlers({
     onChange: ({ search }) => debounce(search, 500)
