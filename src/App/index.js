@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Home from 'layouts/Home';
-import UserPage from 'layouts/UserPage';
-import RepositoryPage from 'layouts/RepositoryPage';
+import Search from 'layouts/Search';
+import User from 'layouts/User';
+import Repository from 'layouts/Repository';
 
 class App extends React.Component {
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/users/:username/" component={UserPage}/>
-          <Route exact path="/users/:username/:repo" component={RepositoryPage}/>
+          <Route exact path="/" component={Search}/>
+          <Route exact path="/users/:username/" component={User}/>
+          <Route exact path="/users/:username/:repo" component={Repository}/>
         </div>
       </Router>
     );

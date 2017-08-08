@@ -14,9 +14,11 @@ const UserPage = ({ username, repos, sortAsc, ascending }) => (
   <Profile>
     <ProfileInfo username={username} />
     <h1>Repositories</h1>
+
     <button href="#sorting" onClick={() => sortAsc(sort => !sort)}>
       { ascending ? 'Ascending' : 'Descending'}
     </button>
+
     <ul>
       { repos.map(repo =>
         <div key={repo.id}>
@@ -42,6 +44,6 @@ export default compose(
   })),
   branch(
     props => isEmpty(props.repos),
-    renderComponent(props => <Loading />),
+    renderComponent(Loading),
   ),
 )(UserPage);
