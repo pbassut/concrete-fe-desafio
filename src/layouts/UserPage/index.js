@@ -1,6 +1,7 @@
 import React from 'react';
 import { withState, compose, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
+import { isEmpty, matchesProperty } from 'lodash';
 
 import { GHListRepositories } from 'containers';
 import { Loading } from 'components';

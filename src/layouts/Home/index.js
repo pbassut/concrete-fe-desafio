@@ -23,13 +23,6 @@ export default compose(
     onChange: ({ search }) => debounce(search, 500)
   }),
   GHSearchUsers,
-  withProps(({ results }) => ({
-    users: results.map(({ id, login })=> 
-      <ListItem key={id}>
-        <Link to={`/users/${login}`}>{login}</Link>
-      </ListItem>
-    )
-  })),
   lifecycle({
     componentWillReceiveProps(nextProps) {
       if(this.props.q !== nextProps.q){
@@ -37,4 +30,11 @@ export default compose(
       }
     }
   }),
+  withProps(({ results }) => ({
+    users: results.map(({ id, login })=> 
+      <ListItem key={id}>
+        <Link to={`/users/${login}`}>{login}</Link>
+      </ListItem>
+    )
+  })),
 )(Home);

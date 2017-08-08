@@ -4,7 +4,7 @@ import { renderComponent, branch, compose, withProps } from 'recompose';
 import { GHUser } from 'containers';
 import { Loading } from 'components';
 
-import _ from 'lodash';
+import { matchesProperty } from 'lodash';
 
 const ProfileInfo = ({ user }) => (
   <div>
@@ -18,7 +18,6 @@ const ProfileInfo = ({ user }) => (
 )
 
 export default compose(
-  withProps(({ username }) => ({ q: username })),
   GHUser,
   branch(
     matchesProperty('user', []),
