@@ -3,7 +3,7 @@ import { GHResourceFetch } from 'containers';
 
 export default compose(
   GHResourceFetch(
-    ({ gh, q }) => gh.getUser(q).getProfile()
+    ({ gh, username }) => gh.getUser(username).getProfile()
   ),
   renameProp('data', 'user'),
 )

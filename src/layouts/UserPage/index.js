@@ -27,7 +27,7 @@ const UserPage = ({ username, repos, sortAsc, ascending }) => (
 
 export default compose(
   withState('ascending', 'sortAsc', false),
-  withProps(props => ({ q: props.match.params.username })),
+  withProps(props => ({ username: props.match.params.username })),
   GHListRepositories,
   withProps(({ ascending, repos }) => ({
     repos: repos.sort(({ stargazers_count: s1 }, { stargazers_count: s2}) =>
