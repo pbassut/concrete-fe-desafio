@@ -1,7 +1,9 @@
 import React from 'react';
-import { compose, withProps } from 'recompose';
+import { branch, renderComponent, compose, withProps } from 'recompose';
+import { matchesProperty } from 'lodash';
 
 import { GHRepository } from 'containers';
+import { Loading } from 'components';
 
 import './styles.css';
 
@@ -21,4 +23,8 @@ export default compose(
     repo: props.match.params.repo,
   })),
   GHRepository,
+  branch(
+    matchesProperty('repository', []),
+    renderComponent(Loading),
+  ),
 )(RepositoryPage);
