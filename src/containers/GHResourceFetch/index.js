@@ -12,10 +12,10 @@ export default methodCall => compose(
   })),
   withState('data', 'setData', []),
   withHandlers({
-    request: props => () => (
+    request: ({ setData, ...props }) => () => (
         methodCall(props)
-          .then(({ data }) => props.setData(data))
-          .catch(() => props.setData([]))
+          .then(({ data }) => setData(data))
+          .catch(() => setData([]))
     )
   }),
   componentDidMount(({ request }) => request())

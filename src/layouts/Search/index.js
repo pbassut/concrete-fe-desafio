@@ -4,14 +4,17 @@ import { Link } from 'react-router-dom';
 import { debounce } from 'lodash';
 
 import { GHSearchUsers } from 'containers';
+import { Loading } from 'components';
 
 import { Container, SearchInput, SearchForm, List, ListItem } from './styles.js';
 
-const Home = ({ onChange, users }) => (
+const Home = ({ onChange, users, isLoading }) => (
   <Container>
     <SearchForm>
       <h1>Search</h1>
       <SearchInput type="text" onChange={e => onChange(e.target.value) }/>
+      { isLoading && <Loading xsmall />}
+
       <List>{ users }</List>
     </SearchForm>
   </Container>
@@ -19,6 +22,7 @@ const Home = ({ onChange, users }) => (
 
 export default compose(
   withState('q', 'search', ''),
+  withState('isLoading', 'showLoading', false),
   withHandlers({
     onChange: ({ search }) => debounce(search, 500)
   }),
@@ -26,7 +30,11 @@ export default compose(
   lifecycle({
     componentWillReceiveProps(nextProps) {
       if(this.props.q !== nextProps.q){
-        this.props.request();
+        this.props.showLoading(true);
+
+        this.props.request().then(() => 
+          this.props.showLoading(false)
+        );
       }
     }
   }),
