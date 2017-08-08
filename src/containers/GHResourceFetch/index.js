@@ -1,5 +1,5 @@
 import GitHub from 'github-api';
-import { withHandlers, withProps, lifecycle, withState, defaultProps, compose } from 'recompose';
+import { withHandlers, withProps, withState, defaultProps, compose } from 'recompose';
 
 import { componentDidMount } from 'composables';
 

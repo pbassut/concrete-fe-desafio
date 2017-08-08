@@ -1,4 +1,4 @@
-import { defaultProps, renameProp, compose } from 'recompose';
+import { renameProp, compose } from 'recompose';
 import { GHResourceFetch } from 'containers';
 
 export default compose(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderComponent, branch, compose, withProps } from 'recompose';
+import { renderComponent, branch, compose } from 'recompose';
 
 import { GHUser } from 'containers';
 import { Loading } from 'components';
