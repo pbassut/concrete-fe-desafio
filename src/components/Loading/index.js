@@ -6,16 +6,16 @@ import './styles.css';
 const TheCube = styled.div.attrs({
   className: 'cssload-thecube'
 })`
-  width: 25px;
-  height: 25px;
+  width: ${props => props.xsmall ? 25 : 73}px;
+  height: ${props => props.xsmall ? 25 : 73}px;
 	margin: 0 auto;
 	margin-top: 49px;
 	position: relative;
 	transform: rotateZ(45deg);
-  -o-transform: rotateZ(45deg);
-  -ms-transform: rotateZ(45deg);
-  -webkit-transform: rotateZ(45deg);
-  -moz-transform: rotateZ(45deg);
+		-o-transform: rotateZ(45deg);
+		-ms-transform: rotateZ(45deg);
+		-webkit-transform: rotateZ(45deg);
+		-moz-transform: rotateZ(45deg);
 `
 
 export default props => (
