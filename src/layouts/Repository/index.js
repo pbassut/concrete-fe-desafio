@@ -24,7 +24,7 @@ export default compose(
   })),
   GHRepository,
   branch(
-    matchesProperty('repository', []),
+    matchesProperty('repository', null),
     renderComponent(Loading),
   ),
 )(RepositoryPage);
