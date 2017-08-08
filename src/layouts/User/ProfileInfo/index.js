@@ -13,10 +13,12 @@ const ProfileInfo = ({ user }) => (
     <div>
       <Title>{`${user.name}(${user.login})`}</Title>
     </div>
-    <div>
-      <SubTitle>Email: </SubTitle>
-      <span>{ user.email }</span>
-    </div>
+    { user.email && 
+      <div>
+        <SubTitle>Email: </SubTitle>
+        <span>{ user.email }</span>
+      </div>
+    }
     <div>
       <SubTitle>Following: </SubTitle>
       <span>{ user.following }</span>
@@ -25,10 +27,12 @@ const ProfileInfo = ({ user }) => (
       <SubTitle>Followers: </SubTitle>
       <span>{ user.followers }</span>
     </div>
-    <div>
-      <SubTitle>Bio: </SubTitle>
-      <span>{ user.bio }</span>
-    </div>
+    { user.bio && 
+        <div>
+          <SubTitle>Bio: </SubTitle>
+          <span>{ user.bio }</span>
+        </div>
+    }
   </div>
 )
 
