@@ -3,6 +3,7 @@ import { withState, compose, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 
 import { GHListRepositories } from 'containers';
+import { Loading } from 'components';
 
 import ProfileInfo from './ProfileInfo';
 import './styles.css';
@@ -34,4 +35,8 @@ export default compose(
       ascending ? s1 - s2 : s2 - s1
     )
   })),
+  branch(
+    props => isEmpty(props.repos),
+    renderComponent(props => <Loading />),
+  ),
 )(UserPage);

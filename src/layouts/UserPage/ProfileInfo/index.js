@@ -2,6 +2,7 @@ import React from 'react';
 import { renderComponent, branch, compose, withProps } from 'recompose';
 
 import { GHUser } from 'containers';
+import { Loading } from 'components';
 
 import _ from 'lodash';
 
@@ -20,7 +21,7 @@ export default compose(
   withProps(({ username }) => ({ q: username })),
   GHUser,
   branch(
-    _.matchesProperty('user', []),
-    renderComponent(props => <h1>loading</h1>),
+    matchesProperty('user', []),
+    renderComponent(props => <Loading />),
   )
 )(ProfileInfo);
