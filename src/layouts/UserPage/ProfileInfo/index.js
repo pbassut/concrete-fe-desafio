@@ -5,15 +5,30 @@ import { GHUser } from 'containers';
 import { Loading } from 'components';
 
 import { matchesProperty } from 'lodash';
+import { Title, SubTitle } from './styles.js';
 
 const ProfileInfo = ({ user }) => (
   <div>
     <img alt="repository owner" src={user.avatar_url} />
-    <h1>{`${user.name}(${user.login})`}</h1>
-    <h2>Email: { user.email }</h2>
-    <h2>Following: { user.following }</h2>
-    <h2>Followers: { user.followers }</h2>
-    <h2>Bio: { user.bio }</h2>
+    <div>
+      <Title>{`${user.name}(${user.login})`}</Title>
+    </div>
+    <div>
+      <SubTitle>Email: </SubTitle>
+      <span>{ user.email }</span>
+    </div>
+    <div>
+      <SubTitle>Following: </SubTitle>
+      <span>{ user.following }</span>
+    </div>
+    <div>
+      <SubTitle>Followers: </SubTitle>
+      <span>{ user.followers }</span>
+    </div>
+    <div>
+      <SubTitle>Bio: </SubTitle>
+      <span>{ user.bio }</span>
+    </div>
   </div>
 )
 

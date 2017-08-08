@@ -1,5 +1,5 @@
 import React from 'react';
-import { withState, compose, withProps } from 'recompose';
+import { branch, renderComponent, withState, compose, withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 import { isEmpty, matchesProperty } from 'lodash';
 
@@ -7,24 +7,28 @@ import { GHListRepositories } from 'containers';
 import { Loading } from 'components';
 
 import ProfileInfo from './ProfileInfo';
-import './styles.css';
+import Star from './Star';
+import { Profile, StarCount } from './styles.js';
 
 const UserPage = ({ username, repos, sortAsc, ascending }) => (
-  <div>
+  <Profile>
     <ProfileInfo username={username} />
-    <a href="#sorting" onClick={() => sortAsc(sort => !sort)}>{ ascending ? 'Ascending' : 'Descending'}</a>
-    <h1>Repositórios: </h1>
+    <h1>Repositories</h1>
+    <button href="#sorting" onClick={() => sortAsc(sort => !sort)}>
+      { ascending ? 'Ascending' : 'Descending'}
+    </button>
     <ul>
-      { repos.map(r =>
-        <div key={r.id}>
-          <span>
-            <Link to={`/users/${r.full_name}`}>{r.name}</Link>   
-            Stars: {r.stargazers_count}
-          </span>
+      { repos.map(repo =>
+        <div key={repo.id}>
+          <Link to={`/users/${repo.full_name}`}>{repo.name}</Link>   
+          <StarCount>
+            <Star />
+            {repo.stargazers_count}
+          </StarCount>
         </div>
       )}
     </ul>
-  </div>
+  </Profile>
 )
 
 export default compose(
